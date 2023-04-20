@@ -1,5 +1,7 @@
 package com.example.touristicproject.entities;
 
+import com.example.touristicproject.entities.pivots.UserTrip;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,11 +31,16 @@ public class User {
     @Column(length = 40)
     private String lastName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List <Trip> trips;
+    @ManyToOne
+    @JoinColumn(name = "trip_id")
+    @JsonBackReference
+    private Trip trip;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List <Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<UserTrip>userTrips;
 }
