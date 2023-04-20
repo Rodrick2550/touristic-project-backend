@@ -1,5 +1,6 @@
 package com.example.touristicproject.entities;
 
+import com.example.touristicproject.entities.pivots.UserTrip;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -23,7 +24,7 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<User> users;
+    private List<UserTrip> userTrips ;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
