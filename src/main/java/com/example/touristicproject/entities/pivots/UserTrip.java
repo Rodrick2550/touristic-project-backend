@@ -1,29 +1,28 @@
-package com.example.touristicproject.entities;
-
+package com.example.touristicproject.entities.pivots;
+import com.example.touristicproject.entities.Trip;
+import com.example.touristicproject.entities.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
-@Table(name = "trips")
+@Table(name = "users_trips")
 @Getter
 @Setter
-public class Trip {
+public class UserTrip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
-
+    @ManyToOne
+    @JoinColumn(name = "trip_id")
+    @JsonBackReference
+    private Trip trip;
 
 }
