@@ -1,8 +1,12 @@
 package com.example.touristicproject.entities;
 
+import com.example.touristicproject.entities.pivots.SiteCategory;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -18,5 +22,7 @@ public class Category {
     @Column(length = 50, unique = true)
     private String name;
 
-
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<SiteCategory> siteCategories;
 }
