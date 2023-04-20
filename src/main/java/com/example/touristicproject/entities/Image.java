@@ -1,5 +1,6 @@
 package com.example.touristicproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +18,10 @@ public class Image {
 
     @Column
     private String imageUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "site_id")
+    @JsonBackReference
+    private Site site;
 
 }
