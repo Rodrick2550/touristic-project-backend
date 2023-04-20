@@ -1,8 +1,12 @@
 package com.example.touristicproject.entities;
 
+import com.example.touristicproject.entities.pivots.SiteCategory;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "sites")
@@ -24,4 +28,12 @@ public class Site {
 
     @Column(length = 150)
     private String coordinates;
+
+    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Image> images;
+
+    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<SiteCategory> siteCategories;
 }
