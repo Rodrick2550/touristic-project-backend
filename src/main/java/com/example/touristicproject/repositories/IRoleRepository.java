@@ -1,9 +1,9 @@
 package com.example.touristicproject.repositories;
 
-import com.example.touristicproject.entities.TripStatus;
+import com.example.touristicproject.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ITripStatusRepository extends JpaRepository<TripStatus, Long> {
+public interface IRoleRepository extends JpaRepository<Role, Long> {
 }

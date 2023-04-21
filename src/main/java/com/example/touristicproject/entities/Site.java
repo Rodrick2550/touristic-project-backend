@@ -26,9 +26,6 @@ public class Site {
     @Column(length = 150)
     private String address;
 
-    @Column(length = 150)
-    private String coordinates;
-
     @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Image> images;
